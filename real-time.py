@@ -17,6 +17,15 @@ video_capture = cv2.VideoCapture(0)
 
 KNOWN_FACES_DIR = 'known_faces'
 
+#Enter the name
+val = input("Enter student's name: ")
+root = "."
+path = f"{root}/{KNOWN_FACES_DIR}/{val}/"
+os.makedirs(path)
+
+def saveImage(image):
+    imgSaveDir = path.join(path, 'yourImagesName')
+    cv2.imwrite(imgSaveDir , image)
 
 print('Loading known faces...')
 known_faces = []
@@ -92,7 +101,7 @@ while True:
         #nameSize = cv2.getTextSize(name, font, 1, 2)[0]
         #textX = (frame[1] - nameSize[0]) / 2
         #textY = (frame[0] + nameSize)[1] / 2
-        if name=="Imposter":
+        if name == "Imposter":
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
             # Draw a label with a name below the face
             cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
